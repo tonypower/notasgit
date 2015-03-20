@@ -1,0 +1,42 @@
+O diff apresenta as linhas diferentes lado a lado.
+
+Ter um cvs permite que o programador não tenha medo de experimentar modificações no código.
+
+Mostrar os commits feitos
+	git log
+
+Mostrar as diferenças entre dois commits
+git diff 2345678uyfvb765t 56789iugfvb
+
+Fazer um commit por logical change (em vez de por linha, ou ao fim de muito código)
+Também, fazer um commit por cada ficheiro diferente modificado.
+No caso de vários typos num README, mais vale fazer um commit.
+
+O GIT não faz commits automáticos. Vantagem: os commits fazem sentido. Desvantagem: posso-me esquecer.
+
+Um conjunto de ficheiros relacionados, é chamado de repository.
+Um commit atualiza todos os ficheiros no repositório.
+
+
+Copiar um repositório inteiro (de um computador para outro):
+	git clone
+
+Alterar as definições do git para ver log colorido:
+	git config --global color.ui auto
+
+Voltar a um commit anterior (as mais recentes mantêm-se)
+Útil quando apareceu bug e não sei em que commit (assim posso fazer checkout e experimentar qual foi)
+	git checkout
+
+Para ter uma prompt diferente em pastas GIT
+	source ~/ficheiroComDefsGit.sh
+	export GIT_PS1_SHOWDIRTYSTATE=1 #mostra asterísco se alterado
+	export PS1="$purple\u$green\$(__git_ps1)$blue \W $ $reset"
+
+Definir o editor de texto do git
+	git config --global core.editor "gedit"
+	git config --global push.default upstream
+	git config --global merg.conflictstyle diff3
+
+
+Se não tiver havido nenhuma alteração, o git não permite fazer um commit.
