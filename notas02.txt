@@ -1,0 +1,95 @@
+Verificar que estou num repositório
+	git status
+
+Criar um repositório novo
+	git init
+
+Após a criação de um repositório, este encontra-se vazio
+É necessário adicionar ficheiros ao repositório.
+
+Adicionar ficheiros ao repositório
+	git add ficheiros
+
+Os ficheiros são colocados numa "staging area", ou seja, ainda não são um commit.
+
+A staging area serve para se trabalhar nos ficheiros
+
+Para submeter um commit
+	git commit
+
+Para ver diferenças entre os ficheiros na working directory e na staging area
+	git diff (sem argumentos)
+
+Para ver as diferenças entre os ficheiros na staging area e no repositório
+	git diff --staged
+
+Para anular quaisquer modificações dos ficheiros na working directory e staging area (atenção! não tem undo)
+	git reset --hard
+
+
+Temos criados commits em cima de outros, ou seja, em sequência
+Bom para
+	corrigir bugs
+	adicionar documentação
+	adicionar uma nova funcionalidade
+
+Para criar
+	uma versão com uma feature só para testar
+	uma versão noutro idioma
+pode ser útil criar novas branches
+
+Quando criamos um repositório, o git cria a branch master
+Quando aparece a mensagem: deteached head state, quer dizer que estamos num commit sem label (e.g. master)
+
+
+Também se pode fazer checkouts de branches
+Ao se fazer o checkout de uma branch, e se fazer um commit, a label da branch atualiza-se para o novo commit, e mantém-se checked out.
+
+O processo de combinar branches, chama-se merge
+
+Ver em que branch estou	
+	git branch
+
+Criar nova branch
+	git branch nomeBranch
+
+Para fazer alterações noutra branch, é necessário fazer o checkout dela (mudar para ela)
+
+Para mudar para outra branch
+	git checkout nomeBranch
+
+Para vizualizar "linha de tempo" dos commits entre branches
+	git log --graph --oneline master coins
+
+Fazer
+	git branch nomeBranch
+	git checkout nomeBranch
+Equivale a fazer
+	git checkout -b nomeBranch
+
+Head quer dizer current commit
+Ao se fazer o checkout de um commit anterior, podemos fazer modificações, mas essas modificações se forem commited, não serão alcançáveis a partir do branch, ou seja, estamos em headless state
+Se quiseremos que esse commit fique registado, podemos criar um novo branch
+	git checkout -b nomeBranch
+
+Um merge de uma branch com a branch master vai criar um novo commit com dois pais.
+Assim, não é necessário manter a label da branch merged, já que podemos aceder a todos os seus commits através da branch master.
+Podemos apagar a label que foi merged.
+
+Exemplo: quero fazer um merge do branch x com o master
+1-fazer checkout do master se não estiver já nele
+2-git merge master x	// ou simplesmente git merge x
+3-git branch -d x //apagar o branch x (a label) - não apaga os commits
+
+Para cancelar um merge que correu mal
+	git merge --abort
+
+Visto que após um merge pode haver commits seguidos temporalmente mas que vieram de branches diferentes, se eu quiser ver a diferença entre dois commits, vou ver as diferenças de todos os commits que deram origem a ambos
+
+Para ver só o diff entre um commit e o seu pai:
+	diff show identificacaoCommit
+não necessita que se indique o pai
+
+
+Também posso incluir as modificações que ocorreram no master num outro branch
+basta fazer o checkout desse branch e depois fazer o merge com o master
