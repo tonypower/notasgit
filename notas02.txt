@@ -93,3 +93,5 @@ não necessita que se indique o pai
 
 Também posso incluir as modificações que ocorreram no master num outro branch
 basta fazer o checkout desse branch e depois fazer o merge com o master
+
+
